@@ -15,12 +15,21 @@ export default function Login() {
 
   useEffect(() => {
     if (autoLoginData?.email && autoLoginData?.password) {
-      handleSubmit(); // auto login
+      // handleSubmit(); // auto login
     }
   }, [autoLoginData]);
 
   const handleSubmit = async (e) => {
     // implement your login logic here
+    e.preventDefault()
+    try {
+      const response = await API.post('/auth/login', { email, password })
+      alert(response.data.token)
+      console.log(response)
+    } catch (err) {
+      console.error(err);
+      throw err
+    }
   };
 
   return (

@@ -36,6 +36,7 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
     try {
+        console.log("Called Login")
         const { email, password } = req.body
 
         // VALIDATE IF THE USER EXIST
